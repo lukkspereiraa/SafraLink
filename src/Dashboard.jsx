@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './dashboard.css';
-import { 
-  LayoutDashboard, FileText, ShoppingCart, 
-  Users, Settings, Bell, Search, 
-  TrendingUp, Package, Receipt, Smartphone, X
+import {
+  LayoutDashboard,
+  FileText,
+  ShoppingCart,
+  Users,
+  Settings,
+  Bell,
+  TrendingUp,
+  Package,
+  Receipt,
+  Smartphone,
+  X,
+  Menu
 } from 'lucide-react';
 
 export default function Dashboard() {
   const navigate = useNavigate();
 
   // Estado para controlar o Modal
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedRequest, setSelectedRequest] = useState(null);
+const [isModalOpen, setIsModalOpen] = useState(false);
+const [selectedRequest, setSelectedRequest] = useState(null);
+const [menuOpen, setMenuOpen] = useState(false);
 
   const incomingRequests = [
     { id: 'REQ-2099', produtor: 'Fazenda Boa Vista', item: 'Adubo NPK 10-10-10', volume: '100 Sacas', status: 'Nova Demanda' },
@@ -37,7 +47,13 @@ export default function Dashboard() {
     <div className="dashboard-wrapper">
       
       {/* SIDEBAR */}
-      <aside className="sidebar">
+      <aside className={`sidebar ${menuOpen ? 'open' : ''}`}>
+        {menuOpen && (
+        <div
+            className="sidebar-overlay"
+             onClick={() => setMenuOpen(false)}
+            />
+)}
         <div className="sidebar-header">
           <div className="brand-title">
             <TrendingUp size={28} className="brand-highlight" />
@@ -66,7 +82,17 @@ export default function Dashboard() {
       {/* CONTEÚDO PRINCIPAL */}
       <main className="main-content">
         <header className="topbar">
-          <h2 className="page-title">Visão Geral da Operação</h2>
+
+  <button
+    className="menu-toggle"
+    onClick={() => setMenuOpen(!menuOpen)}
+  >
+    {menuOpen ? <X size={26}/> : <Menu size={26}/>}
+  </button>
+
+  <h2 className="page-title">
+    Visão Geral da OperaçãoF
+  </h2>
           <div className="topbar-actions">
             <button 
               onClick={() => navigate('/')} 

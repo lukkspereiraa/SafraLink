@@ -417,3 +417,124 @@
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+/* ================= MENU HAMBÚRGUER ================= */
+
+.menu-toggle{
+    display:none;
+    border:none;
+    background:none;
+    cursor:pointer;
+    color:var(--slate-800);
+    margin-right:10px;
+}
+
+.sidebar-overlay{
+    display:none;
+}
+
+/* ================= RESPONSIVIDADE ================= */
+
+@media (max-width:900px){
+
+.dashboard-wrapper{
+    overflow-x:hidden;
+}
+
+.sidebar{
+
+    position:fixed;
+    top:0;
+    left:-270px;
+    width:260px;
+    height:100%;
+    z-index:1000;
+    transition:left .3s ease;
+
+}
+
+.sidebar.open{
+
+    left:0;
+
+}
+
+.sidebar-overlay{
+
+    display:block;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    z-index:999;
+
+}
+
+.menu-toggle{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+}
+
+.topbar{
+
+    padding:0 15px;
+
+}
+
+.page-title{
+
+    font-size:18px;
+
+}
+
+.topbar-actions{
+
+    gap:10px;
+
+}
+
+.content-body{
+
+    padding:15px;
+
+}
+
+.kpi-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.kpi-card{
+
+    width:100%;
+
+}
+
+.table-container{
+
+    overflow-x:auto;
+
+}
+
+.data-table{
+
+    min-width:760px;
+
+}
+
+.modal-content{
+
+    width:95%;
+    margin:15px;
+
+}
+
+.mobile-hide{
+
+    display:none !important;
+
+}
+
+}
